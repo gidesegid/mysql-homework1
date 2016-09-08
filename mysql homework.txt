@@ -1,0 +1,110 @@
+show databases;
+
+*information_schema
+*mysql
+*performance_schema
+*sakila
+*sys
+*todos
+*world
+which database to use
+
+use todos;
+
+ 
+
+to show all tables in the database:
+show tables;
+
+creating todos table with its columns:
+
+CREATE TABLE todos (
+     id int(11) NOT NULL AUTO_INCREMENT,
+     name CHAR(30) NOT NULL,
+     done boolean DEFAULT false,
+     PRIMARY KEY (id)
+);
+
+insert data to a table todos:
+
+insert into todos(name,done)values("column values",true);
+
+to show the data content of the table todos:
+
+select * from todos;
+
+
+
+
+
+
+
+
+command promot of mysql looks like below
+
+mysql> CREATE TABLE todos (
+    ->      id int(11) NOT NULL AUTO_INCREMENT,
+    ->      name CHAR(30) NOT NULL,
+    ->      done boolean DEFAULT false,
+    ->      PRIMARY KEY (id)
+    -> );
+Query OK, 0 rows affected (0.86 sec)
+
+mysql> desc todos;
++-------+------------+------+-----+---------+----------------+
+| Field | Type       | Null | Key | Default | Extra          |
++-------+------------+------+-----+---------+----------------+
+| id    | int(11)    | NO   | PRI | NULL    | auto_increment |
+| name  | char(30)   | NO   |     | NULL    |                |
+| done  | tinyint(1) | YES  |     | 0       |                |
++-------+------------+------+-----+---------+----------------+
+3 rows in set (0.11 sec)
+
+mysql> insert into todos(name,done) values(gide,true);
+ERROR 1054 (42S22): Unknown column 'gide' in 'field list'
+mysql> insert into todos(name,done) values("gide",true);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> show todos;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near 'todos
+' at line 1
+mysql> select * from todos;
++----+------+------+
+| id | name | done |
++----+------+------+
+|  1 | gide |    1 |
++----+------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into todos(name,done)values("wedisegid",false);
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into todos(name,done)values("hyf",true);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from todos;
++----+-----------+------+
+| id | name      | done |
++----+-----------+------+
+|  1 | gide      |    1 |
+|  2 | wedisegid |    0 |
+|  3 | hyf       |    1 |
++----+-----------+------+
+3 rows in set (0.00 sec)
+
+mysql> insert into todos(name,done)values("",false);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from todos;
++----+-----------+------+
+| id | name      | done |
++----+-----------+------+
+|  1 | gide      |    1 |
+|  2 | wedisegid |    0 |
+|  3 | hyf       |    1 |
+|  4 |           |    0 |
++----+-----------+------+
+4 rows in set (0.00 sec)
+
+mysql>
